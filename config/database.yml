@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: hihi_production
-  username: hihi
-  password: <%= ENV['HIHI_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_URL'] %>
+  #username: hihi
+  #password: <%= ENV['HIHI_DATABASE_PASSWORD'] %>
