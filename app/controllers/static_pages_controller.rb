@@ -5,11 +5,11 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def error404
+  def not_found
     render status: 404
   end
 
-  def error500
+  def internal_server_error
     render status: 500
   end
 end
