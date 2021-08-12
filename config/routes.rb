@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get '/500', to: 'static_pages#internal_server_error', via: :all
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'users#index'
+  root 'static_pages#home'
   
 end

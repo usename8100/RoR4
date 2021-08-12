@@ -1,5 +1,25 @@
-<h1>New User</h1>
+<% provide(:title, 'Sign Up') %>
+<h1>Sign Up</h1>
 
-<%= render 'form', user: @user %>
-
+<%= form_with model: @user do |form| %>
+	<div class="mb-3 form-group">
+		<%= form.label :name%>
+		<%= form.text_field :name, class:"form-control", placeholder: "Name"%>
+	</div>
+	<div class="mb-3 form-group">
+		<%= form.label :email%>
+		<%= form.text_field :email, class:"form-control", placeholder: "user@example.com"%>
+	</div>
+	<div class="mb-3 form-group">
+		<%= form.label :password%>
+		<%= form.password_field :password, class:"form-control", placeholder: "Password"%>
+	</div>
+	<div class="mb-3 form-group">
+		<%= form.label :password_confirmation%>
+		<%= form.password_field :password_confirmation, class:"form-control", placeholder: "Password Confirmation"%>
+	</div>
+	<div class="mb-3 form-group">
+		<%= form.submit "Sign Up", class: "btn btn-primary"%>
+	</div>
+<% end %>
 <%= link_to 'Back', users_path %>
