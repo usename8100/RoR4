@@ -10,6 +10,10 @@
   <%= @user.email %>
 </p>
 <p>
+  <strong>Pass:</strong>
+  <%= @user.password_digest %>
+</p>
+<p>
   <strong>Micropost:</strong>
   <% @microposts.each do |micropost| %>
     <%= micropost.content %><br>
