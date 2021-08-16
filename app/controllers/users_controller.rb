@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       if @user.save
         #format.html { redirect_to @user, notice: "User was successfully created." }
         #format.json { render :show, status: :created, location: @user }
+        flash[:success] = "Sign up successfully!"
         redirect_to @user
       else
         #format.html { render :new, status: :unprocessable_entity }
