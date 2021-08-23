@@ -1,6 +1,10 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  #host = 'tranquil-waters-82690.herokuapp.com'
+  #Rails.application.routes.default_url_options[:host] = 'tranquil-waters-82690.herokuapp.com'
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
   #config.exceptions_app = self.routes
   # Settings specified here will take precedence over those in config/application.rb.
 

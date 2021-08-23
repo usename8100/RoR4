@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   resources :microposts
   resources :users
-
+  resources :account_activations, only: [:edit]
+  
   get '/404', to: 'static_pages#not_found', via: :all
   get '/500', to: 'static_pages#internal_server_error', via: :all
   get '/signup', to: 'users#new'
