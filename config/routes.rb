@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'sessions/new'
   get 'static_pages/help'
   get 'static_pages/home'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   resources :microposts
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   
   get '/404', to: 'static_pages#not_found', via: :all
   get '/500', to: 'static_pages#internal_server_error', via: :all
