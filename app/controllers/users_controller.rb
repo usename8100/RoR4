@@ -32,12 +32,13 @@ class UsersController < ApplicationController
 
     #respond_to do |format|
       if @user.save
+        ExampleMailer.sample_email(@user).deliver
         @user.send_activation_email
-        msg = "http://localhost:3000/account_activations/" + @user.activation_token + "/edit?email=" + @user.email.gsub("@","%40")
-        msg2 = "https://tranquil-waters-82690.herokuapp.com/account_activations/" + @user.activation_token + "/edit?email=" + @user.email.gsub("@","%40")
+        #msg = "http://localhost:3000/account_activations/" + @user.activation_token + "/edit?email=" + @user.email.gsub("@","%40")
+        #msg2 = "https://tranquil-waters-82690.herokuapp.com/account_activations/" + @user.activation_token + "/edit?email=" + @user.email.gsub("@","%40")
         flash[:info] = "Please check your email to activate your account.\n"
-        flash[:success] = msg
-        flash[:danger] = msg2
+        #flash[:success] = msg
+        #flash[:danger] = msg2
         redirect_to root_url
       else
         render 'new'
