@@ -5,20 +5,9 @@ Rails.application.configure do
   #Rails.application.routes.default_url_options[:host] = 'tranquil-waters-82690.herokuapp.com'
   #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'tranquil-waters-82690.herokuapp.com' }
 
-  config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-   :address              => "smtp.gmail.com",
-   :port                 => 587,
-   :user_name            => "trinhminhlongad@gmail.com",
-   :password             => "vipvkl012",
-   :authentication       => "plain",
-   :enable_starttls_auto => true
-  }
+  
 
   #config.exceptions_app = self.routes
   # Settings specified here will take precedence over those in config/application.rb.
@@ -137,4 +126,16 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => "trinhminhlongad@gmail.com",
+   :password             => "vipvkl012",
+   :authentication       => "plain",
+   :enable_starttls_auto => true
+  }
+  
 end
