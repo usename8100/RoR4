@@ -2,14 +2,11 @@
 <h1>Update your profile</h1>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<div class="gravatar_edit">
-			<%= gravatar_for @user %>
-			<a href="https://gravatar.com/emails" target="_blank" class="btn btn-light">Change</a>
-		</div>
+		
 		<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
+			
 			<div class="mb-3 form-group">
-				<%= render 'shared/error_messages' %>
+				<%= render 'shared/error_messages', object: f.object %>
 			</div>
 			<div class="mb-3 form-group">
 				<%= f.label :name %>
@@ -49,5 +46,9 @@
 				<%= f.submit "Save changes", class: "btn btn-primary form-control" %>
 			</div>
 		<% end %>
+		<div class="gravatar_edit">
+			<%= gravatar_for @user %>
+			<a href="https://gravatar.com/emails" target="_blank" class="btn">Change</a>
+		</div>
 	</div>
 </div>
