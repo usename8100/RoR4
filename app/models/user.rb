@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	has_many :microposts
+	has_many :microposts, dependent: :destroy
 	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save :downcase_email
@@ -12,6 +12,19 @@ class User < ApplicationRecord
 	uniqueness: { case_sensitive: true }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+	validates :image, 
+    content_type: { 
+      in: %w[image/jpeg image/gif image/png], message: "must be a valid image format"
+    },
+    size:{ 
+      less_than: 5.megabytes,
+      message: "should be less than 5MB" 
+    }
+
+	# Returns a resized image for display.
+	def display_image
+		image.variant(resize_to_limit: [500, 500])
+	end
 
 	# Returns the hash digest of the given string.
 	def User.digest(string)
@@ -69,6 +82,12 @@ class User < ApplicationRecord
 	# Returns true if a password reset has expired.
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago
+	end
+
+	# Defines a proto-feed.
+	# See "Following users" for the full implementation.
+	def feed
+		Micropost.where("user_id = ?", id)
 	end
 
 	private
