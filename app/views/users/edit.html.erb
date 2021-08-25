@@ -7,6 +7,7 @@
 			<a href="https://gravatar.com/emails" target="_blank" class="btn btn-light">Change</a>
 		</div>
 		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
 			<div class="mb-3 form-group">
 				<%= render 'shared/error_messages' %>
 			</div>
