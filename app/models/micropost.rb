@@ -12,4 +12,10 @@ class Micropost < ApplicationRecord
       less_than: 5.megabytes,
       message: "should be less than 5MB" 
     }
+
+    
+  # Returns a resized image for display.
+  def display_image
+    image.variant(resize_to_limit: [500, 500])
+  end
 end
