@@ -8,10 +8,15 @@ Rails.application.routes.draw do
   get 'static_pages/internal_server_error'
 
   resources :microposts
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   get '/404', to: 'static_pages#not_found', via: :all
   get '/500', to: 'static_pages#internal_server_error', via: :all
