@@ -6,7 +6,6 @@
 		<%= form_for(@user) do |f| %>
 			
 			<div class="mb-3 form-group">
-				<%= render 'shared/error_messages', object: f.object %>
 			</div>
 			<div class="mb-3 form-group">
 				<%= f.label :name %>
@@ -23,9 +22,7 @@
 			<% if @user.errors[:password].any? %>
 				<div class="error_explanation">
 					<div class="alert alert-danger">
-						<% @user.errors[:password].each do |msg| %>
-							<div><%= 'Password ' + msg %></div>	
-						<% end %>
+						<div><%= @user.errors.full_messages_for(:password).first %></div>	
 					</div>
 				</div>
 			<% end %>
@@ -36,9 +33,7 @@
 			<% if @user.errors[:password_confirmation].any? %>
 				<div class="error_explanation">
 					<div class="alert alert-danger">
-						<% @user.errors[:password_confirmation].each do |msg| %>
-							<div><%= 'Password Confirmation ' + msg %></div>
-						<% end %>		
+						<div><%= @user.errors.full_messages_for(:password_confirmation).first %></div>		
 					</div>
 				</div>
 			<% end %>
